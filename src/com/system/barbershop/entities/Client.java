@@ -15,6 +15,7 @@ public class Client implements IClientRepository {
     private String phone;
     private String password;
     private List<IScheduleRepository> listSchedule = new ArrayList<>();
+
     public Client() {}
 
     public Client(String name, String email, String phone, String password) {
