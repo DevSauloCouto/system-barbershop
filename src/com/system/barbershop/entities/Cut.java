@@ -1,11 +1,9 @@
 package com.system.barbershop.entities;
 
-import com.system.barbershop.entities.interfaces.ICutRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cut implements ICutRepository {
+public class Cut {
 
     private String title;
     private String details;
@@ -38,12 +36,7 @@ public class Cut implements ICutRepository {
 
     @Override
     public String toString() {
-        return "title="
-                + title
-                + " details="
-                + details
-                + " price="
-                + price;
+        return title + " - " + details + " - " + " $" + price;
     }
 
 }

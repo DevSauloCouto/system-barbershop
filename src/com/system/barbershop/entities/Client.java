@@ -1,20 +1,17 @@
 package com.system.barbershop.entities;
 
-import com.system.barbershop.entities.interfaces.IClientRepository;
-import com.system.barbershop.entities.interfaces.IScheduleRepository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Client implements IClientRepository {
+public class Client {
 
     private UUID id;
     private String name;
     private String email;
     private String phone;
     private String password;
-    private List<IScheduleRepository> listSchedule = new ArrayList<>();
+    private List<Schedule> listSchedule = new ArrayList<>();
 
     public Client() {}
 
@@ -46,9 +43,18 @@ public class Client implements IClientRepository {
         return password;
     }
 
-    public List<IScheduleRepository> getListSchedule() {
+    public List<Schedule> getListSchedule() {
         return this.listSchedule;
     }
 
+    @Override
+    public String toString() {
+        return "name="
+                + name
+                + " email="
+                + email
+                + " phone="
+                + phone;
+    }
 
 }

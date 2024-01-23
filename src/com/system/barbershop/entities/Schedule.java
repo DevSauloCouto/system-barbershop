@@ -2,7 +2,6 @@ package com.system.barbershop.entities;
 
 import com.system.barbershop.entities.abstracts.Payment;
 import com.system.barbershop.entities.enums.StatusSchedule;
-import com.system.barbershop.entities.interfaces.IScheduleRepository;
 import com.system.barbershop.exceptions.DateInvalidException;
 import com.system.barbershop.services.ScheduleService;
 import com.system.barbershop.services.interfaces.IScheduleService;
@@ -11,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-public class Schedule implements IScheduleRepository {
+public class Schedule {
 
     private IScheduleService scheduleService = new ScheduleService(this);
 
@@ -21,18 +20,18 @@ public class Schedule implements IScheduleRepository {
     private Payment payment;
     private StatusSchedule status;
     private Cut cut;
-    private UUID clientId;
+    private Client client;
 
     public Schedule() {}
 
-    public Schedule(String dateSchedule, Payment payment, Cut cut, UUID clientId) throws DateInvalidException {
+    public Schedule(String dateSchedule, Payment payment, Cut cut, Client client) throws DateInvalidException {
         this.id = UUID.randomUUID();
         if(scheduleService.isValidDate(dateSchedule)) {
             this.dateSchedule = LocalDateTime.parse(dateSchedule, formatDate);
         }
         this.payment = payment;
         this.cut = cut;
-        this.clientId = clientId;
+        this.client = client;
     }
 
     public UUID getId() {
@@ -55,8 +54,8 @@ public class Schedule implements IScheduleRepository {
         return cut;
     }
 
-    public UUID getClientId() {
-        return clientId;
+    public Client getClientId() {
+        return client;
     }
 
     public void setStatus(StatusSchedule status) {
@@ -78,8 +77,8 @@ public class Schedule implements IScheduleRepository {
                 + status.toString()
                 + " cut="
                 + cut
-                + " id-client="
-                + clientId;
+                + " client="
+                + client;
     }
 
 

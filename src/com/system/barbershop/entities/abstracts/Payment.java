@@ -1,41 +1,37 @@
 package com.system.barbershop.entities.abstracts;
 
-import com.system.barbershop.entities.interfaces.IPaymentRepository;
+import com.system.barbershop.entities.Client;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public abstract class Payment implements IPaymentRepository {
+public abstract class Payment {
 
     protected UUID id;
     protected Double valuePay;
-    protected UUID idPayer;
+    protected Client payer;
     protected LocalDateTime datePayment;
 
     public Payment() {}
 
-    public Payment(Double valuePay, UUID idPayer) {
+    public Payment(Double valuePay, Client payer) {
         this.id = UUID.randomUUID();
         this.valuePay = valuePay;
-        this.idPayer = idPayer;
+        this.payer = payer;
     }
 
-    @Override
     public UUID getId() {
         return id;
     }
 
-    @Override
     public Double getValuePay() {
         return valuePay;
     }
 
-    @Override
-    public UUID getIdPayer() {
-        return idPayer;
+    public Client getIdPayer() {
+        return payer;
     }
 
-    @Override
     public LocalDateTime getDatePayment() {
         return datePayment;
     }
@@ -47,6 +43,6 @@ public abstract class Payment implements IPaymentRepository {
         return "value="
                 + valuePay
                 + " payer="
-                + idPayer;
+                + payer;
     }
 }
