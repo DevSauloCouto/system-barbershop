@@ -38,11 +38,4 @@ public abstract class Payment {
 
     public abstract Boolean pay();
 
-    @Override
-    public String toString() {
-        return "value="
-                + valuePay
-                + " payer="
-                + payer;
-    }
 }
