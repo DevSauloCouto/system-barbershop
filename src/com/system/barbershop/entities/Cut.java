@@ -36,7 +36,7 @@ public class Cut {
 
     @Override
     public String toString() {
-        return title + " - " + details + " - " + " $" + price;
+        return "Nome: " + title + "\n" + "Detalhes: " + details + "\n" + "Preço: R$" + price + "\n";
     }
 
 }
