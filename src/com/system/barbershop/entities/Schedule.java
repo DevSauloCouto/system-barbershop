@@ -26,10 +26,12 @@ public class Schedule {
 
     public Schedule(String dateSchedule, Payment payment, Cut cut, Client client) throws DateInvalidException {
         this.id = UUID.randomUUID();
-        if(scheduleService.isValidDate(dateSchedule)) {
+        if (scheduleService.isValidDate(dateSchedule)) {
             this.dateSchedule = LocalDateTime.parse(dateSchedule, formatDate);
         }
-        this.payment = payment;
+        if (scheduleService.isExistPayment(payment)) {
+            this.payment = payment;
+        }
         this.cut = cut;
         this.client = client;
     }
